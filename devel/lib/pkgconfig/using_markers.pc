@@ -1,0 +1,8 @@
+prefix=/home/wall-e/Terry_ws/devel
+
+Name: using_markers
+Description: Description of using_markers
+Version: 0.0.0
+Cflags: -I/home/wall-e/Terry_ws/devel/include
+Libs: -L/home/wall-e/Terry_ws/devel/lib 
+Requires: 

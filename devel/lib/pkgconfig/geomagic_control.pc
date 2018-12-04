@@ -1,0 +1,8 @@
+prefix=/home/wall-e/Terry_ws/devel
+
+Name: geomagic_control
+Description: Description of geomagic_control
+Version: 1.0.0
+Cflags: -I/home/wall-e/Terry_ws/devel/include
+Libs: -L/home/wall-e/Terry_ws/devel/lib 
+Requires: roscpp std_msgs geometry_msgs genmsg rosconsole tf urdf

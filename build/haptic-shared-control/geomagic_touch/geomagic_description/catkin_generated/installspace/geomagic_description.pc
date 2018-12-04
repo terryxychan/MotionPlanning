@@ -1,0 +1,8 @@
+prefix=/home/wall-e/Terry_ws/install
+
+Name: geomagic_description
+Description: Description of geomagic_description
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/wall-e/Terry_ws/install/lib 
+Requires: 
