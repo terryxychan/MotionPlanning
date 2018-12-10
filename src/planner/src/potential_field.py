@@ -90,11 +90,21 @@ def callback(data):
     else:
         print('Waiting for collision')
         # creates next coordinate until potential field is no longer active
+        
+def callback_initiate(data):
+    firstPoint = Point()
+    firstPoint.x = data.agent_x
+    firstPoint.y = data.agent_y
+    firstPoint.z = 0
+    point_PT.publish(firstPoint)
+    print('Inititating')
+    print(firstPoint)
 
 if __name__ == '__main__':
     try:
         rospy.init_node('potential_field', anonymous=True)
         moving_obs = rospy.Subscriber('manager_task',manager_msgs,callback)
+        initiation = rospy.Subscriber('/initiation',manager_msgs,callback_initiate)
         rospy.spin()
     except rospy.ROSInterruptException:
         pass
