@@ -25,7 +25,8 @@ struct manager_msgs_
 
   manager_msgs_()
     : flag(false)
-    , radius(0.0)
+    , obs_r(0.0)
+    , infl_dist(0.0)
     , obs_x(0.0)
     , obs_y(0.0)
     , agent_x(0.0)
@@ -33,7 +34,8 @@ struct manager_msgs_
     }
   manager_msgs_(const ContainerAllocator& _alloc)
     : flag(false)
-    , radius(0.0)
+    , obs_r(0.0)
+    , infl_dist(0.0)
     , obs_x(0.0)
     , obs_y(0.0)
     , agent_x(0.0)
@@ -46,8 +48,11 @@ struct manager_msgs_
    typedef uint8_t _flag_type;
   _flag_type flag;
 
-   typedef double _radius_type;
-  _radius_type radius;
+   typedef double _obs_r_type;
+  _obs_r_type obs_r;
+
+   typedef double _infl_dist_type;
+  _infl_dist_type infl_dist;
 
    typedef double _obs_x_type;
   _obs_x_type obs_x;
@@ -138,12 +143,12 @@ struct MD5Sum< ::planner::manager_msgs_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "ac5a6f3bc967fa7c59d9fce13690555f";
+    return "e192cbba72aaee2cc4fc8b43054cab9c";
   }
 
   static const char* value(const ::planner::manager_msgs_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xac5a6f3bc967fa7cULL;
-  static const uint64_t static_value2 = 0x59d9fce13690555fULL;
+  static const uint64_t static_value1 = 0xe192cbba72aaee2cULL;
+  static const uint64_t static_value2 = 0xc4fc8b43054cab9cULL;
 };
 
 template<class ContainerAllocator>
@@ -164,7 +169,8 @@ struct Definition< ::planner::manager_msgs_<ContainerAllocator> >
   {
     return "# this is a msg from the manager\n\
 bool flag\n\
-float64 radius\n\
+float64 obs_r\n\
+float64 infl_dist\n\
 float64 obs_x\n\
 float64 obs_y\n\
 float64 agent_x\n\
@@ -188,7 +194,8 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.flag);
-      stream.next(m.radius);
+      stream.next(m.obs_r);
+      stream.next(m.infl_dist);
       stream.next(m.obs_x);
       stream.next(m.obs_y);
       stream.next(m.agent_x);
@@ -213,8 +220,10 @@ struct Printer< ::planner::manager_msgs_<ContainerAllocator> >
   {
     s << indent << "flag: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.flag);
-    s << indent << "radius: ";
-    Printer<double>::stream(s, indent + "  ", v.radius);
+    s << indent << "obs_r: ";
+    Printer<double>::stream(s, indent + "  ", v.obs_r);
+    s << indent << "infl_dist: ";
+    Printer<double>::stream(s, indent + "  ", v.infl_dist);
     s << indent << "obs_x: ";
     Printer<double>::stream(s, indent + "  ", v.obs_x);
     s << indent << "obs_y: ";

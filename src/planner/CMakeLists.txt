@@ -116,7 +116,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+ include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -197,3 +197,16 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(rrt_star src/rrt_star.cpp)
+target_link_libraries(rrt_star ${catkin_LIBRARIES} rrtstar obstacles dubins)
+add_dependencies(rrt_star planner_generate_messages_cpp)
+
+add_library(rrtstar src/rrtstar.cpp)
+target_link_libraries(rrtstar ${catkin_LIBRARIES} obstacles dubins)
+
+add_library(obstacles src/obstacles.cpp)
+target_link_libraries(obstacles ${catkin_LIBRARIES} )
+
+add_library(dubins src/dubins.cpp)
+target_link_libraries(dubins ${catkin_LIBRARIES})

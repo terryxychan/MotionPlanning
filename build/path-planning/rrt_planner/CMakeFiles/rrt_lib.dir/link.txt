@@ -1,1 +1,1 @@
-/usr/bin/c++  -fPIC  -fopenmp   -shared -Wl,-soname,librrt_lib.so -o /home/wall-e/Terry_ws/devel/lib/librrt_lib.so CMakeFiles/rrt_lib.dir/src/rrt_planner.cpp.o  -L/opt/ros/indigo/lib 
+/usr/bin/c++  -fPIC  -fopenmp -g   -shared -Wl,-soname,librrt_lib.so -o /home/wall-e/Terry_ws/devel/lib/librrt_lib.so CMakeFiles/rrt_lib.dir/src/rrt_planner.cpp.o  -L/opt/ros/indigo/lib 

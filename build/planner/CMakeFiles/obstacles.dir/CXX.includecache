@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/wall-e/Terry_ws/src/planner/include/planner/constants.h
+
+/home/wall-e/Terry_ws/src/planner/include/planner/obstacles.h
+vector
+-
+eigen3/Eigen/Dense
+-
+assert.h
+-
+planner/constants.h
+/home/wall-e/Terry_ws/src/planner/include/planner/planner/constants.h
+
+/home/wall-e/Terry_ws/src/planner/src/obstacles.cpp
+planner/obstacles.h
+/home/wall-e/Terry_ws/src/planner/src/planner/obstacles.h
+

@@ -230,7 +230,7 @@ gtest/preinstall:
 gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  9
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  10
 	@echo "Built target gtest"
 .PHONY : gtest/CMakeFiles/gtest.dir/all
 
@@ -261,7 +261,7 @@ clean: gtest/CMakeFiles/gtest.dir/clean
 gtest/CMakeFiles/gtest_main.dir/all: gtest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  10
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  11
 	@echo "Built target gtest_main"
 .PHONY : gtest/CMakeFiles/gtest_main.dir/all
 
@@ -289,11 +289,17 @@ clean: gtest/CMakeFiles/gtest_main.dir/clean
 # Directory level rules for directory planner
 
 # Convenience name for "all" pass in the directory.
+planner/all: planner/CMakeFiles/dubins.dir/all
+planner/all: planner/CMakeFiles/obstacles.dir/all
 planner/all: planner/CMakeFiles/planner_generate_messages.dir/all
+planner/all: planner/CMakeFiles/rrt_star.dir/all
+planner/all: planner/CMakeFiles/rrtstar.dir/all
 .PHONY : planner/all
 
 # Convenience name for "clean" pass in the directory.
 planner/clean: planner/CMakeFiles/_planner_generate_messages_check_deps_manager_msgs.dir/clean
+planner/clean: planner/CMakeFiles/dubins.dir/clean
+planner/clean: planner/CMakeFiles/obstacles.dir/clean
 planner/clean: planner/CMakeFiles/planner_gencpp.dir/clean
 planner/clean: planner/CMakeFiles/planner_generate_messages.dir/clean
 planner/clean: planner/CMakeFiles/planner_generate_messages_cpp.dir/clean
@@ -307,6 +313,8 @@ planner/clean: planner/CMakeFiles/roscpp_generate_messages_py.dir/clean
 planner/clean: planner/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
 planner/clean: planner/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 planner/clean: planner/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+planner/clean: planner/CMakeFiles/rrt_star.dir/clean
+planner/clean: planner/CMakeFiles/rrtstar.dir/clean
 planner/clean: planner/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 planner/clean: planner/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
 planner/clean: planner/CMakeFiles/std_msgs_generate_messages_py.dir/clean
@@ -348,6 +356,76 @@ clean: planner/CMakeFiles/_planner_generate_messages_check_deps_manager_msgs.dir
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target planner/CMakeFiles/dubins.dir
+
+# All Build rule for target.
+planner/CMakeFiles/dubins.dir/all:
+	$(MAKE) -f planner/CMakeFiles/dubins.dir/build.make planner/CMakeFiles/dubins.dir/depend
+	$(MAKE) -f planner/CMakeFiles/dubins.dir/build.make planner/CMakeFiles/dubins.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  1
+	@echo "Built target dubins"
+.PHONY : planner/CMakeFiles/dubins.dir/all
+
+# Include target in all.
+all: planner/CMakeFiles/dubins.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+planner/CMakeFiles/dubins.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wall-e/Terry_ws/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 planner/CMakeFiles/dubins.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wall-e/Terry_ws/build/CMakeFiles 0
+.PHONY : planner/CMakeFiles/dubins.dir/rule
+
+# Convenience name for target.
+dubins: planner/CMakeFiles/dubins.dir/rule
+.PHONY : dubins
+
+# clean rule for target.
+planner/CMakeFiles/dubins.dir/clean:
+	$(MAKE) -f planner/CMakeFiles/dubins.dir/build.make planner/CMakeFiles/dubins.dir/clean
+.PHONY : planner/CMakeFiles/dubins.dir/clean
+
+# clean rule for target.
+clean: planner/CMakeFiles/dubins.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target planner/CMakeFiles/obstacles.dir
+
+# All Build rule for target.
+planner/CMakeFiles/obstacles.dir/all:
+	$(MAKE) -f planner/CMakeFiles/obstacles.dir/build.make planner/CMakeFiles/obstacles.dir/depend
+	$(MAKE) -f planner/CMakeFiles/obstacles.dir/build.make planner/CMakeFiles/obstacles.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  13
+	@echo "Built target obstacles"
+.PHONY : planner/CMakeFiles/obstacles.dir/all
+
+# Include target in all.
+all: planner/CMakeFiles/obstacles.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+planner/CMakeFiles/obstacles.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wall-e/Terry_ws/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 planner/CMakeFiles/obstacles.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wall-e/Terry_ws/build/CMakeFiles 0
+.PHONY : planner/CMakeFiles/obstacles.dir/rule
+
+# Convenience name for target.
+obstacles: planner/CMakeFiles/obstacles.dir/rule
+.PHONY : obstacles
+
+# clean rule for target.
+planner/CMakeFiles/obstacles.dir/clean:
+	$(MAKE) -f planner/CMakeFiles/obstacles.dir/build.make planner/CMakeFiles/obstacles.dir/clean
+.PHONY : planner/CMakeFiles/obstacles.dir/clean
+
+# clean rule for target.
+clean: planner/CMakeFiles/obstacles.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target planner/CMakeFiles/planner_gencpp.dir
 
 # All Build rule for target.
@@ -383,8 +461,8 @@ clean: planner/CMakeFiles/planner_gencpp.dir/clean
 
 # All Build rule for target.
 planner/CMakeFiles/planner_generate_messages.dir/all: planner/CMakeFiles/planner_generate_messages_cpp.dir/all
-planner/CMakeFiles/planner_generate_messages.dir/all: planner/CMakeFiles/planner_generate_messages_py.dir/all
 planner/CMakeFiles/planner_generate_messages.dir/all: planner/CMakeFiles/planner_generate_messages_lisp.dir/all
+planner/CMakeFiles/planner_generate_messages.dir/all: planner/CMakeFiles/planner_generate_messages_py.dir/all
 	$(MAKE) -f planner/CMakeFiles/planner_generate_messages.dir/build.make planner/CMakeFiles/planner_generate_messages.dir/depend
 	$(MAKE) -f planner/CMakeFiles/planner_generate_messages.dir/build.make planner/CMakeFiles/planner_generate_messages.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles 
@@ -423,7 +501,7 @@ planner/CMakeFiles/planner_generate_messages_cpp.dir/all: planner/CMakeFiles/_pl
 planner/CMakeFiles/planner_generate_messages_cpp.dir/all: planner/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 	$(MAKE) -f planner/CMakeFiles/planner_generate_messages_cpp.dir/build.make planner/CMakeFiles/planner_generate_messages_cpp.dir/depend
 	$(MAKE) -f planner/CMakeFiles/planner_generate_messages_cpp.dir/build.make planner/CMakeFiles/planner_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  13
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  15
 	@echo "Built target planner_generate_messages_cpp"
 .PHONY : planner/CMakeFiles/planner_generate_messages_cpp.dir/all
 
@@ -455,7 +533,7 @@ planner/CMakeFiles/planner_generate_messages_lisp.dir/all: planner/CMakeFiles/_p
 planner/CMakeFiles/planner_generate_messages_lisp.dir/all: planner/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 	$(MAKE) -f planner/CMakeFiles/planner_generate_messages_lisp.dir/build.make planner/CMakeFiles/planner_generate_messages_lisp.dir/depend
 	$(MAKE) -f planner/CMakeFiles/planner_generate_messages_lisp.dir/build.make planner/CMakeFiles/planner_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  14
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  16
 	@echo "Built target planner_generate_messages_lisp"
 .PHONY : planner/CMakeFiles/planner_generate_messages_lisp.dir/all
 
@@ -487,7 +565,7 @@ planner/CMakeFiles/planner_generate_messages_py.dir/all: planner/CMakeFiles/_pla
 planner/CMakeFiles/planner_generate_messages_py.dir/all: planner/CMakeFiles/std_msgs_generate_messages_py.dir/all
 	$(MAKE) -f planner/CMakeFiles/planner_generate_messages_py.dir/build.make planner/CMakeFiles/planner_generate_messages_py.dir/depend
 	$(MAKE) -f planner/CMakeFiles/planner_generate_messages_py.dir/build.make planner/CMakeFiles/planner_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  15 16
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  17 18
 	@echo "Built target planner_generate_messages_py"
 .PHONY : planner/CMakeFiles/planner_generate_messages_py.dir/all
 
@@ -757,6 +835,80 @@ planner/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean:
 
 # clean rule for target.
 clean: planner/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target planner/CMakeFiles/rrt_star.dir
+
+# All Build rule for target.
+planner/CMakeFiles/rrt_star.dir/all: planner/CMakeFiles/obstacles.dir/all
+planner/CMakeFiles/rrt_star.dir/all: planner/CMakeFiles/planner_generate_messages_cpp.dir/all
+planner/CMakeFiles/rrt_star.dir/all: planner/CMakeFiles/rrtstar.dir/all
+planner/CMakeFiles/rrt_star.dir/all: planner/CMakeFiles/dubins.dir/all
+	$(MAKE) -f planner/CMakeFiles/rrt_star.dir/build.make planner/CMakeFiles/rrt_star.dir/depend
+	$(MAKE) -f planner/CMakeFiles/rrt_star.dir/build.make planner/CMakeFiles/rrt_star.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  21
+	@echo "Built target rrt_star"
+.PHONY : planner/CMakeFiles/rrt_star.dir/all
+
+# Include target in all.
+all: planner/CMakeFiles/rrt_star.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+planner/CMakeFiles/rrt_star.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wall-e/Terry_ws/build/CMakeFiles 5
+	$(MAKE) -f CMakeFiles/Makefile2 planner/CMakeFiles/rrt_star.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wall-e/Terry_ws/build/CMakeFiles 0
+.PHONY : planner/CMakeFiles/rrt_star.dir/rule
+
+# Convenience name for target.
+rrt_star: planner/CMakeFiles/rrt_star.dir/rule
+.PHONY : rrt_star
+
+# clean rule for target.
+planner/CMakeFiles/rrt_star.dir/clean:
+	$(MAKE) -f planner/CMakeFiles/rrt_star.dir/build.make planner/CMakeFiles/rrt_star.dir/clean
+.PHONY : planner/CMakeFiles/rrt_star.dir/clean
+
+# clean rule for target.
+clean: planner/CMakeFiles/rrt_star.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target planner/CMakeFiles/rrtstar.dir
+
+# All Build rule for target.
+planner/CMakeFiles/rrtstar.dir/all: planner/CMakeFiles/obstacles.dir/all
+planner/CMakeFiles/rrtstar.dir/all: planner/CMakeFiles/dubins.dir/all
+	$(MAKE) -f planner/CMakeFiles/rrtstar.dir/build.make planner/CMakeFiles/rrtstar.dir/depend
+	$(MAKE) -f planner/CMakeFiles/rrtstar.dir/build.make planner/CMakeFiles/rrtstar.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  22
+	@echo "Built target rrtstar"
+.PHONY : planner/CMakeFiles/rrtstar.dir/all
+
+# Include target in all.
+all: planner/CMakeFiles/rrtstar.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+planner/CMakeFiles/rrtstar.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wall-e/Terry_ws/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 planner/CMakeFiles/rrtstar.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wall-e/Terry_ws/build/CMakeFiles 0
+.PHONY : planner/CMakeFiles/rrtstar.dir/rule
+
+# Convenience name for target.
+rrtstar: planner/CMakeFiles/rrtstar.dir/rule
+.PHONY : rrtstar
+
+# clean rule for target.
+planner/CMakeFiles/rrtstar.dir/clean:
+	$(MAKE) -f planner/CMakeFiles/rrtstar.dir/build.make planner/CMakeFiles/rrtstar.dir/clean
+.PHONY : planner/CMakeFiles/rrtstar.dir/clean
+
+# clean rule for target.
+clean: planner/CMakeFiles/rrtstar.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -1154,7 +1306,7 @@ clean: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/actionli
 haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/force_pub.dir/all:
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/force_pub.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/force_pub.dir/depend
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/force_pub.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/force_pub.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  2
 	@echo "Built target force_pub"
 .PHONY : haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/force_pub.dir/all
 
@@ -1217,9 +1369,9 @@ clean: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic
 # Target rules for target haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages.dir
 
 # All Build rule for target.
-haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_cpp.dir/all
-haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_lisp.dir/all
 haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_py.dir/all
+haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_lisp.dir/all
+haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_cpp.dir/all
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages.dir/depend
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles 
@@ -1254,12 +1406,12 @@ clean: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic
 # Target rules for target haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_cpp.dir
 
 # All Build rule for target.
-haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_cpp.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/_geomagic_control_generate_messages_check_deps_PhantomButtonEvent.dir/all
-haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_cpp.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
 haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_cpp.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/_geomagic_control_generate_messages_check_deps_OmniFeedback.dir/all
+haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_cpp.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
+haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_cpp.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/_geomagic_control_generate_messages_check_deps_PhantomButtonEvent.dir/all
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_cpp.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_cpp.dir/depend
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_cpp.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  2 3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  3 4
 	@echo "Built target geomagic_control_generate_messages_cpp"
 .PHONY : haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_cpp.dir/all
 
@@ -1287,12 +1439,12 @@ clean: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic
 # Target rules for target haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_lisp.dir
 
 # All Build rule for target.
-haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_lisp.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/_geomagic_control_generate_messages_check_deps_PhantomButtonEvent.dir/all
 haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_lisp.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_lisp.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/_geomagic_control_generate_messages_check_deps_OmniFeedback.dir/all
+haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_lisp.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/_geomagic_control_generate_messages_check_deps_PhantomButtonEvent.dir/all
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_lisp.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_lisp.dir/depend
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_lisp.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  4 5
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  5 6
 	@echo "Built target geomagic_control_generate_messages_lisp"
 .PHONY : haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_lisp.dir/all
 
@@ -1320,12 +1472,12 @@ clean: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic
 # Target rules for target haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_py.dir
 
 # All Build rule for target.
+haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_py.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/_geomagic_control_generate_messages_check_deps_OmniFeedback.dir/all
 haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_py.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_py.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/_geomagic_control_generate_messages_check_deps_PhantomButtonEvent.dir/all
-haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_py.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/_geomagic_control_generate_messages_check_deps_OmniFeedback.dir/all
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_py.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_py.dir/depend
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_py.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  6 7 8
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  7 8 9
 	@echo "Built target geomagic_control_generate_messages_py"
 .PHONY : haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geomagic_control_generate_messages_py.dir/all
 
@@ -1511,7 +1663,7 @@ clean: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geometry
 haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/omni.dir/all:
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/omni.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/omni.dir/depend
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/omni.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/omni.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  12
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  14
 	@echo "Built target omni"
 .PHONY : haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/omni.dir/all
 
@@ -1546,7 +1698,7 @@ clean: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/omni.dir
 haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/pose_subscriber.dir/all:
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/pose_subscriber.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/pose_subscriber.dir/depend
 	$(MAKE) -f haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/pose_subscriber.dir/build.make haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/pose_subscriber.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  17
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  19
 	@echo "Built target pose_subscriber"
 .PHONY : haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/pose_subscriber.dir/all
 
@@ -2033,7 +2185,7 @@ clean: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_me
 haptic-shared-control/using_markers/CMakeFiles/keyboard.dir/all:
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/keyboard.dir/build.make haptic-shared-control/using_markers/CMakeFiles/keyboard.dir/depend
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/keyboard.dir/build.make haptic-shared-control/using_markers/CMakeFiles/keyboard.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  11
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  12
 	@echo "Built target keyboard"
 .PHONY : haptic-shared-control/using_markers/CMakeFiles/keyboard.dir/all
 
@@ -2068,7 +2220,7 @@ clean: haptic-shared-control/using_markers/CMakeFiles/keyboard.dir/clean
 haptic-shared-control/using_markers/CMakeFiles/static_obstacle.dir/all:
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/static_obstacle.dir/build.make haptic-shared-control/using_markers/CMakeFiles/static_obstacle.dir/depend
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/static_obstacle.dir/build.make haptic-shared-control/using_markers/CMakeFiles/static_obstacle.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  19
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  23
 	@echo "Built target static_obstacle"
 .PHONY : haptic-shared-control/using_markers/CMakeFiles/static_obstacle.dir/all
 
@@ -2103,7 +2255,7 @@ clean: haptic-shared-control/using_markers/CMakeFiles/static_obstacle.dir/clean
 haptic-shared-control/using_markers/CMakeFiles/using_markers.dir/all:
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/using_markers.dir/build.make haptic-shared-control/using_markers/CMakeFiles/using_markers.dir/depend
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/using_markers.dir/build.make haptic-shared-control/using_markers/CMakeFiles/using_markers.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  20
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  24
 	@echo "Built target using_markers"
 .PHONY : haptic-shared-control/using_markers/CMakeFiles/using_markers.dir/all
 
@@ -2166,9 +2318,9 @@ clean: haptic-shared-control/using_markers/CMakeFiles/using_markers_gencpp.dir/c
 # Target rules for target haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages.dir
 
 # All Build rule for target.
-haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages.dir/all: haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/all
-haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages.dir/all: haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/all
 haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages.dir/all: haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/all
+haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages.dir/all: haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/all
+haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages.dir/all: haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/all
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages.dir/build.make haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages.dir/depend
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages.dir/build.make haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles 
@@ -2204,14 +2356,14 @@ clean: haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_mes
 
 # All Build rule for target.
 haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/all: planner/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_Point2D.dir/all
 haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_obstacle_status.dir/all
+haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_Point2D.dir/all
 haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
-haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_environment.dir/all
 haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_Polygon.dir/all
+haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_environment.dir/all
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/build.make haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/depend
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/build.make haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  21 22 23 24
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  25 26 27 28
 	@echo "Built target using_markers_generate_messages_cpp"
 .PHONY : haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_cpp.dir/all
 
@@ -2239,15 +2391,15 @@ clean: haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_mes
 # Target rules for target haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir
 
 # All Build rule for target.
-haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/all: planner/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_Point2D.dir/all
-haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_obstacle_status.dir/all
 haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
-haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_environment.dir/all
+haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/all: planner/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_obstacle_status.dir/all
+haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_Point2D.dir/all
 haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_Polygon.dir/all
+haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_environment.dir/all
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/build.make haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/depend
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/build.make haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  25 26 27 28
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  29 30 31 32
 	@echo "Built target using_markers_generate_messages_lisp"
 .PHONY : haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_lisp.dir/all
 
@@ -2276,14 +2428,14 @@ clean: haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_mes
 
 # All Build rule for target.
 haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/all: planner/CMakeFiles/std_msgs_generate_messages_py.dir/all
+haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_obstacle_status.dir/all
 haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_Point2D.dir/all
 haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/all: haptic-shared-control/geomagic_touch/geomagic_control/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
-haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_obstacle_status.dir/all
-haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_environment.dir/all
 haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_Polygon.dir/all
+haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/all: haptic-shared-control/using_markers/CMakeFiles/_using_markers_generate_messages_check_deps_environment.dir/all
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/build.make haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/depend
 	$(MAKE) -f haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/build.make haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  29 30 31 32 33
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  33 34 35 36 37
 	@echo "Built target using_markers_generate_messages_py"
 .PHONY : haptic-shared-control/using_markers/CMakeFiles/using_markers_generate_messages_py.dir/all
 
@@ -3255,7 +3407,7 @@ clean: path-planning/rrt_planner/CMakeFiles/pcl_ros_gencfg.dir/clean
 path-planning/rrt_planner/CMakeFiles/rrt_lib.dir/all:
 	$(MAKE) -f path-planning/rrt_planner/CMakeFiles/rrt_lib.dir/build.make path-planning/rrt_planner/CMakeFiles/rrt_lib.dir/depend
 	$(MAKE) -f path-planning/rrt_planner/CMakeFiles/rrt_lib.dir/build.make path-planning/rrt_planner/CMakeFiles/rrt_lib.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  18
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/wall-e/Terry_ws/build/CMakeFiles  20
 	@echo "Built target rrt_lib"
 .PHONY : path-planning/rrt_planner/CMakeFiles/rrt_lib.dir/all
 

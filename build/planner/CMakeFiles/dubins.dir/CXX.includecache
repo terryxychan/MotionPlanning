@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/wall-e/Terry_ws/src/planner/include/planner/dubins.h
+
+/home/wall-e/Terry_ws/src/planner/src/dubins.cpp
+planner/dubins.h
+/home/wall-e/Terry_ws/src/planner/src/planner/dubins.h
+math.h
+-
+assert.h
+-
+

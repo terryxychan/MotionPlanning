@@ -1,8 +1,10 @@
 (cl:in-package planner-msg)
 (cl:export '(FLAG-VAL
           FLAG
-          RADIUS-VAL
-          RADIUS
+          OBS_R-VAL
+          OBS_R
+          INFL_DIST-VAL
+          INFL_DIST
           OBS_X-VAL
           OBS_X
           OBS_Y-VAL

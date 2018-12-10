@@ -12,9 +12,14 @@
     :initarg :flag
     :type cl:boolean
     :initform cl:nil)
-   (radius
-    :reader radius
-    :initarg :radius
+   (obs_r
+    :reader obs_r
+    :initarg :obs_r
+    :type cl:float
+    :initform 0.0)
+   (infl_dist
+    :reader infl_dist
+    :initarg :infl_dist
     :type cl:float
     :initform 0.0)
    (obs_x
@@ -52,10 +57,15 @@
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader planner-msg:flag-val is deprecated.  Use planner-msg:flag instead.")
   (flag m))
 
-(cl:ensure-generic-function 'radius-val :lambda-list '(m))
-(cl:defmethod radius-val ((m <manager_msgs>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader planner-msg:radius-val is deprecated.  Use planner-msg:radius instead.")
-  (radius m))
+(cl:ensure-generic-function 'obs_r-val :lambda-list '(m))
+(cl:defmethod obs_r-val ((m <manager_msgs>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader planner-msg:obs_r-val is deprecated.  Use planner-msg:obs_r instead.")
+  (obs_r m))
+
+(cl:ensure-generic-function 'infl_dist-val :lambda-list '(m))
+(cl:defmethod infl_dist-val ((m <manager_msgs>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader planner-msg:infl_dist-val is deprecated.  Use planner-msg:infl_dist instead.")
+  (infl_dist m))
 
 (cl:ensure-generic-function 'obs_x-val :lambda-list '(m))
 (cl:defmethod obs_x-val ((m <manager_msgs>))
@@ -79,7 +89,16 @@
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <manager_msgs>) ostream)
   "Serializes a message object of type '<manager_msgs>"
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:if (cl:slot-value msg 'flag) 1 0)) ostream)
-  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'radius))))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'obs_r))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'infl_dist))))
     (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
@@ -137,7 +156,17 @@
       (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
-    (cl:setf (cl:slot-value msg 'radius) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:setf (cl:slot-value msg 'obs_r) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'infl_dist) (roslisp-utils:decode-double-float-bits bits)))
     (cl:let ((bits 0))
       (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
@@ -188,19 +217,20 @@
   "planner/manager_msgs")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<manager_msgs>)))
   "Returns md5sum for a message object of type '<manager_msgs>"
-  "ac5a6f3bc967fa7c59d9fce13690555f")
+  "e192cbba72aaee2cc4fc8b43054cab9c")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'manager_msgs)))
   "Returns md5sum for a message object of type 'manager_msgs"
-  "ac5a6f3bc967fa7c59d9fce13690555f")
+  "e192cbba72aaee2cc4fc8b43054cab9c")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<manager_msgs>)))
   "Returns full string definition for message of type '<manager_msgs>"
-  (cl:format cl:nil "# this is a msg from the manager~%bool flag~%float64 radius~%float64 obs_x~%float64 obs_y~%float64 agent_x~%float64 agent_y~%~%~%"))
+  (cl:format cl:nil "# this is a msg from the manager~%bool flag~%float64 obs_r~%float64 infl_dist~%float64 obs_x~%float64 obs_y~%float64 agent_x~%float64 agent_y~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'manager_msgs)))
   "Returns full string definition for message of type 'manager_msgs"
-  (cl:format cl:nil "# this is a msg from the manager~%bool flag~%float64 radius~%float64 obs_x~%float64 obs_y~%float64 agent_x~%float64 agent_y~%~%~%"))
+  (cl:format cl:nil "# this is a msg from the manager~%bool flag~%float64 obs_r~%float64 infl_dist~%float64 obs_x~%float64 obs_y~%float64 agent_x~%float64 agent_y~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <manager_msgs>))
   (cl:+ 0
      1
+     8
      8
      8
      8
@@ -211,7 +241,8 @@
   "Converts a ROS message object to a list"
   (cl:list 'manager_msgs
     (cl:cons ':flag (flag msg))
-    (cl:cons ':radius (radius msg))
+    (cl:cons ':obs_r (obs_r msg))
+    (cl:cons ':infl_dist (infl_dist msg))
     (cl:cons ':obs_x (obs_x msg))
     (cl:cons ':obs_y (obs_y msg))
     (cl:cons ':agent_x (agent_x msg))

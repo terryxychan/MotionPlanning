@@ -2,4 +2,4 @@
 source_root_dir = "/home/wall-e/Terry_ws/src"
 whitelisted_packages = "".split(';') if "" != "" else []
 blacklisted_packages = "".split(';') if "" != "" else []
-underlay_workspaces = "/home/wall-e/Terry_ws/devel;/home/wall-e/geomagic_ws/devel;/opt/ros/indigo".split(';') if "/home/wall-e/Terry_ws/devel;/home/wall-e/geomagic_ws/devel;/opt/ros/indigo" != "" else []
+underlay_workspaces = "/home/wall-e/geomagic_ws/devel;/opt/ros/indigo".split(';') if "/home/wall-e/geomagic_ws/devel;/opt/ros/indigo" != "" else []

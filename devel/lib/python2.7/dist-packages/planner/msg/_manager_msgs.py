@@ -7,19 +7,20 @@ import struct
 
 
 class manager_msgs(genpy.Message):
-  _md5sum = "ac5a6f3bc967fa7c59d9fce13690555f"
+  _md5sum = "e192cbba72aaee2cc4fc8b43054cab9c"
   _type = "planner/manager_msgs"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """# this is a msg from the manager
 bool flag
-float64 radius
+float64 obs_r
+float64 infl_dist
 float64 obs_x
 float64 obs_y
 float64 agent_x
 float64 agent_y
 """
-  __slots__ = ['flag','radius','obs_x','obs_y','agent_x','agent_y']
-  _slot_types = ['bool','float64','float64','float64','float64','float64']
+  __slots__ = ['flag','obs_r','infl_dist','obs_x','obs_y','agent_x','agent_y']
+  _slot_types = ['bool','float64','float64','float64','float64','float64','float64']
 
   def __init__(self, *args, **kwds):
     """
@@ -29,7 +30,7 @@ float64 agent_y
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       flag,radius,obs_x,obs_y,agent_x,agent_y
+       flag,obs_r,infl_dist,obs_x,obs_y,agent_x,agent_y
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -40,8 +41,10 @@ float64 agent_y
       #message fields cannot be None, assign default values for those that are
       if self.flag is None:
         self.flag = False
-      if self.radius is None:
-        self.radius = 0.
+      if self.obs_r is None:
+        self.obs_r = 0.
+      if self.infl_dist is None:
+        self.infl_dist = 0.
       if self.obs_x is None:
         self.obs_x = 0.
       if self.obs_y is None:
@@ -52,7 +55,8 @@ float64 agent_y
         self.agent_y = 0.
     else:
       self.flag = False
-      self.radius = 0.
+      self.obs_r = 0.
+      self.infl_dist = 0.
       self.obs_x = 0.
       self.obs_y = 0.
       self.agent_x = 0.
@@ -71,7 +75,7 @@ float64 agent_y
     """
     try:
       _x = self
-      buff.write(_struct_B5d.pack(_x.flag, _x.radius, _x.obs_x, _x.obs_y, _x.agent_x, _x.agent_y))
+      buff.write(_struct_B6d.pack(_x.flag, _x.obs_r, _x.infl_dist, _x.obs_x, _x.obs_y, _x.agent_x, _x.agent_y))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -84,8 +88,8 @@ float64 agent_y
       end = 0
       _x = self
       start = end
-      end += 41
-      (_x.flag, _x.radius, _x.obs_x, _x.obs_y, _x.agent_x, _x.agent_y,) = _struct_B5d.unpack(str[start:end])
+      end += 49
+      (_x.flag, _x.obs_r, _x.infl_dist, _x.obs_x, _x.obs_y, _x.agent_x, _x.agent_y,) = _struct_B6d.unpack(str[start:end])
       self.flag = bool(self.flag)
       return self
     except struct.error as e:
@@ -100,7 +104,7 @@ float64 agent_y
     """
     try:
       _x = self
-      buff.write(_struct_B5d.pack(_x.flag, _x.radius, _x.obs_x, _x.obs_y, _x.agent_x, _x.agent_y))
+      buff.write(_struct_B6d.pack(_x.flag, _x.obs_r, _x.infl_dist, _x.obs_x, _x.obs_y, _x.agent_x, _x.agent_y))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -114,12 +118,12 @@ float64 agent_y
       end = 0
       _x = self
       start = end
-      end += 41
-      (_x.flag, _x.radius, _x.obs_x, _x.obs_y, _x.agent_x, _x.agent_y,) = _struct_B5d.unpack(str[start:end])
+      end += 49
+      (_x.flag, _x.obs_r, _x.infl_dist, _x.obs_x, _x.obs_y, _x.agent_x, _x.agent_y,) = _struct_B6d.unpack(str[start:end])
       self.flag = bool(self.flag)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
-_struct_B5d = struct.Struct("<B5d")
+_struct_B6d = struct.Struct("<B6d")
