@@ -9,6 +9,10 @@ planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /home/wall-e/Terry_ws/src/pl
 planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /home/wall-e/Terry_ws/src/planner/src/rrt_star.cpp
 planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/XmlRpcDecl.h
 planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/XmlRpcValue.h
+planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/geometry_msgs/Point.h
+planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/geometry_msgs/Pose.h
+planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/geometry_msgs/Quaternion.h
+planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/geometry_msgs/Vector3.h
 planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/ros/advertise_options.h
 planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/ros/advertise_service_options.h
 planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/ros/assert.h
@@ -63,4 +67,7 @@ planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/ros/
 planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/ros/wall_timer.h
 planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/ros/wall_timer_options.h
 planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/rosconsole/macros_generated.h
+planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/std_msgs/ColorRGBA.h
+planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/std_msgs/Header.h
+planner/CMakeFiles/rrt_star.dir/src/rrt_star.cpp.o: /opt/ros/indigo/include/visualization_msgs/Marker.h
 

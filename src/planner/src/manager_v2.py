@@ -43,28 +43,20 @@ def dist_calc(x1,y1,x2,y2):
     return math.sqrt((x1-x2)**2+(y1-y2)**2)
 
 def callback(data):
-    global pt_agent_x
-    global pt_agent_y
-    pt_agent_x = data.x
-    pt_agent_y = data.y
-    makeMarker(pt_agent_x,pt_agent_y)
+    global agent_x_now
+    global agent_y_now
+    agent_x_now = data.x
+    agent_y_now = data.y
+    makeMarker(data.x,data.y)
     # rospy.loginfo("publishing marker!")
 
 
 def initPoint(start_x,start_y,positionNow):
     global agent_x_now
     global agent_y_now
-    global pt_agent_x
-    global pt_agent_y
-    global rrt_agent_x
-    global rrt_agent_y
     global init_flag
     agent_x_now = start_x
     agent_y_now = start_y
-    pt_agent_x = start_x
-    pt_agent_y = start_y
-    rrt_agent_x = start_x
-    rrt_agent_y = start_y
     rospy.loginfo("Initiating!")
     global initiationPoint
     initiationPoint.x = start_x
@@ -79,10 +71,6 @@ def initPoint(start_x,start_y,positionNow):
 def selection(data):
     global agent_x_now
     global agent_y_now
-    global pt_agent_x
-    global pt_agent_y
-    global rrt_agent_x
-    global rrt_agent_y
     print("Received!")
     manager_msg = manager_msgs()
     # Calculate the distance between the agent and the obstacle
@@ -91,11 +79,9 @@ def selection(data):
     # Send out the flag
     # radius = data.vx
     # For now: only pass on pt_coordinates
-    agent_x_now = pt_agent_x
-    agent_y_now = pt_agent_y
     if init_flag == 1:
         radius = 2
-        infl_r = 5
+        infl_r = 4
         dist = dist_calc(agent_x_now,agent_y_now,data.x,data.y)
         if (infl_r>dist):
             # In the influence circle
@@ -106,8 +92,8 @@ def selection(data):
             manager_msg.obs_r = radius
             manager_msg.obs_x = data.x
             manager_msg.obs_y = data.y
-            manager_msg.agent_x = pt_agent_x
-            manager_msg.agent_y = pt_agent_y
+            manager_msg.agent_x = agent_x_now
+            manager_msg.agent_y = agent_y_now
             pub_manager.publish(manager_msg)
         else:
             # Outside circle
@@ -118,8 +104,8 @@ def selection(data):
             manager_msg.obs_r = radius
             manager_msg.obs_x = data.x
             manager_msg.obs_y = data.y
-            manager_msg.agent_x = rrt_agent_x
-            manager_msg.agent_y = rrt_agent_y
+            manager_msg.agent_x = agent_x_now
+            manager_msg.agent_y = agent_y_now
             pub_manager.publish(manager_msg)
     else:
             pass

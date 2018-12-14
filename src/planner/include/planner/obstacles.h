@@ -40,7 +40,7 @@ public:
     else
     {
       return true;
-    } 
+    }
   }
 private:
   double x1,x2,y1,y2;
@@ -50,9 +50,10 @@ class Obstacles
 {
 public:
   Obstacles();
-  void addObstacle(Vector2f firstPoint, Vector2f secondPoint);
+  void addObstacle(Vector2f firstPoint, Vector2f secondPoint, int shapeAdd);
   bool isSegmentInObstacle(Vector2f &p1, Vector2f &p2);
   vector<pair<Vector2f, Vector2f> > obstacles;
+  vector<int> shapeType;
 };
 
 #endif // OBSTACLES_H

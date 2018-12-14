@@ -50,10 +50,10 @@ def calculateDistance(x1,y1,x2,y2):
     return float(dist)
 
 def staticObs():
-    obs_1 = obstacle(np.array([1,7]),5,0.1)
-    obs_2 = obstacle(np.array([-9,6]),6,0.1)
-    obs_3 = obstacle(np.array([12,5]),6,0.1)
-    obs_4 = obstacle(np.array([2,-2]),4,0.1)
+    obs_1 = obstacle(np.array([1,7]),5,0.5)
+    obs_2 = obstacle(np.array([-9,6]),6,0.5)
+    obs_3 = obstacle(np.array([12,5]),6,0.5)
+    obs_4 = obstacle(np.array([2,-2]),4,0.5)
     return ReturnValueObstacle(obs_1,obs_2,obs_3,obs_4)
 
 def dist_circle(obstacle,agent_coor):
@@ -64,7 +64,10 @@ def dist_circle(obstacle,agent_coor):
 
 def U_rep_grad(obstacle,agent_coor):
     dist_sphere = dist_circle(obstacle,agent_coor)
-    grad_U_rep = -(1/dist_sphere.d_s - 1/obstacle.r_i)*(1/(dist_sphere.d_s**2))*((agent_coor-dist_sphere.point_sphere)/calculateDistance(agent_coor[0],agent_coor[1],obstacle.coor[0],obstacle.coor[1]))
+    if (obstacle.r_i >= dist_sphere.d_s):
+        grad_U_rep = -(1/dist_sphere.d_s - 1/obstacle.r_i)*(1/(dist_sphere.d_s**2))*((agent_coor-dist_sphere.point_sphere)/calculateDistance(agent_coor[0],agent_coor[1],obstacle.coor[0],obstacle.coor[1]))
+    else:
+        grad_U_rep = 0
     return grad_U_rep
 # def U_attr_grad(agent_coor):
 #     # Use 'quadratic' shape for attractive

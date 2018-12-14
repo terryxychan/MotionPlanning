@@ -34,7 +34,7 @@ public:
   Vector3f newDubinConfig(Node *q, Node *qNearest, DubinsPath &path);
   void add(Node *qNearest, Node *qNew);
   bool reached();
-  void setStepSize(int step);
+  void setStepSize(double step);
   void setMaxIterations(int iter);
   void deleteNodes(Node *root);
   Obstacles *obstacles;
@@ -43,7 +43,7 @@ public:
   Node *root, *lastNode;
   Vector2f startPos, endPos;
   int max_iter;
-  int step_size;
+  double step_size;
 };
 
 #endif // RRTSTAR_H
