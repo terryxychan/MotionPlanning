@@ -8,8 +8,12 @@
 RRTSTAR *rrtstar;
 bool boolReached = false;
 bool boolInitialed = false;
-// double agent_x,agent_y;
+bool boolNewPath = true;
+double agent_x=-100,agent_y=-100;//last time coor
+Vector2f aimPoint;
 ros::Publisher path_pub;
+ros::Publisher nextPosition;
+int counter = 0;
 
 void rrtstar_algo(){
   // RRTSTAR Algorithm
@@ -45,7 +49,7 @@ void rrtstar_algo(){
             }
           }
           rrtstar->add(qMin, qNew);
-          ROS_INFO_STREAM("New Node Added! "<<rrtstar->nodes.size());
+          // ROS_INFO_STREAM("New Node Added! "<<rrtstar->nodes.size());
           for(int j = 0; j < Qnear.size(); j++){
             Node *qNear = Qnear[j];
             if(!rrtstar->obstacles->isSegmentInObstacle(qNew->position, qNear->position) &&
@@ -72,21 +76,6 @@ void rrtstar_algo(){
       }
     }
   }
-  // Node *q;
-  // if (rrtstar->reached()) {
-  //   q = rrtstar->lastNode;
-  // }
-  // else
-  // {
-  //   // if not reached yet, then shortestPath will start from the closest node to end point.
-  //   q = rrtstar->nearest(rrtstar->endPos);
-  //   ROS_INFO("Exceeded max iterations!");
-  // }
-  // // // generate shortest path to destination.
-  // // while (q != NULL) {
-  // //   rrtstar->path.push_back(q);
-  // //   q = q->parent;
-  // // }
 }
 
 void find_path(const planner::manager_msgs::ConstPtr& msg)
@@ -97,41 +86,93 @@ void find_path(const planner::manager_msgs::ConstPtr& msg)
     // agent_y = msg->agent_y;
     if (boolReached) {
       Vector2f currentPoint(msg->agent_x+20,msg->agent_y+20);
-      // ROS_INFO_STREAM("Current Agent Coor :"<<msg->agent_x<<" "<<currentPoint.y()-20);
-      Node *q;
-      q = rrtstar->nearest(currentPoint);
-      visualization_msgs::Marker marker;
-      marker.header.frame_id = "/base";
-      marker.header.stamp = ros::Time();
-      marker.ns = "rrt";
-      marker.id = 0;
-      marker.type = visualization_msgs::Marker::LINE_STRIP;
-      marker.action = visualization_msgs::Marker::ADD;
-      marker.pose.position.x = 0;
-      marker.pose.position.y = 0;
-      marker.pose.position.z = 0;
-      marker.pose.orientation.x = 0.0;
-      marker.pose.orientation.y = 0.0;
-      marker.pose.orientation.z = 0.0;
-      marker.pose.orientation.w = 1.0;
-      marker.scale.x = 0.1;
-      marker.scale.y = 0.1;
-      marker.scale.z = 0.1;
-      marker.color.a = 1.0; // Don't forget to set the alpha!
-      marker.color.r = 1.0;
-      marker.color.g = 0.0;
-      marker.color.b = 0.0;
-      geometry_msgs::Point pointofPath;
-      // ROS_INFO_STREAM("#nodes : "<<rrtstar->nodes.size());
-      while (q != NULL) {
-        // ROS_INFO_STREAM("Next Point is :"<<q->position.x()-20<<" "<<q->position.y()-20);
+      if(boolNewPath || abs(agent_x-currentPoint.x())>0.05 || abs(agent_y - currentPoint.y())>0.05){//agent_x != currentPoint.x() || agent_y != currentPoint.y()
+        boolNewPath = false;
+        Node *q;
+        q = rrtstar->nearest(currentPoint);
+        //marker for path
+        visualization_msgs::Marker marker;
+        marker.header.frame_id = "/base";
+        marker.header.stamp = ros::Time();
+        marker.ns = "rrt";
+        marker.id = 0;
+        marker.type = visualization_msgs::Marker::LINE_STRIP;
+        marker.action = visualization_msgs::Marker::ADD;
+        marker.pose.position.x = 0;
+        marker.pose.position.y = 0;
+        marker.pose.position.z = 0;
+        marker.pose.orientation.x = 0.0;
+        marker.pose.orientation.y = 0.0;
+        marker.pose.orientation.z = 0.0;
+        marker.pose.orientation.w = 1.0;
+        marker.scale.x = 0.1;
+        marker.scale.y = 0.1;
+        marker.scale.z = 0.1;
+        marker.color.a = 1.0; // Don't forget to set the alpha!
+        marker.color.r = 1.0;
+        marker.color.g = 0.0;
+        marker.color.b = 0.0;
+        geometry_msgs::Point pointofPath;
+        //point for nextPosition
+        geometry_msgs::Point nxPoint;
+        //calculate nextPosition
         pointofPath.x=q->position.x()-20;
         pointofPath.y=q->position.y()-20;
         marker.points.push_back(pointofPath);
         q = q->parent;
+        if(q != NULL){
+          aimPoint[0]=q->position.x();
+          aimPoint[1]=q->position.y();
+          Vector2f direction(aimPoint - currentPoint);
+          double distance(sqrt(direction.transpose()*direction));
+          // ROS_INFO_STREAM(distance);
+          direction/=distance*50;
+          Vector2f v2fNxPoint(currentPoint+direction);
+          // ROS_INFO_STREAM(v2fNxPoint);
+          agent_x = v2fNxPoint.x();
+          agent_y = v2fNxPoint.y();
+          nxPoint.x=v2fNxPoint.x()-20;
+          nxPoint.y=v2fNxPoint.y()-20;
+          nextPosition.publish(nxPoint);
+        }
+        //calculate Path
+
+        while (q != NULL) {
+          // ROS_INFO_STREAM("Next Point is :"<<q->position.x()-20<<" "<<q->position.y()-20);
+          pointofPath.x=q->position.x()-20;
+          pointofPath.y=q->position.y()-20;
+          marker.points.push_back(pointofPath);
+          q = q->parent;
+        }
+        path_pub.publish( marker );
+        return;
       }
-      path_pub.publish( marker );
-      exit;
+      else{
+        if(counter>rand()%100+20){
+          ROS_INFO_STREAM("Path reset!"<<rand()%60+30);
+          boolNewPath = true;
+          counter = 0;
+          return;
+        }
+        Vector2f direction(aimPoint - currentPoint);
+        double distance(sqrt(direction.transpose()*direction));
+        if(distance<0.05){
+          boolNewPath = true;
+          return;
+        }else boolNewPath = false;
+        // ROS_INFO_STREAM(distance);
+        direction/=distance*50;
+        Vector2f v2fNxPoint(currentPoint+direction);
+        // ROS_INFO_STREAM(v2fNxPoint);
+        geometry_msgs::Point nxPoint;
+        agent_x = v2fNxPoint.x();
+        agent_y = v2fNxPoint.y();
+        nxPoint.x=v2fNxPoint.x()-20;
+        nxPoint.y=v2fNxPoint.y()-20;
+        nextPosition.publish(nxPoint);
+        ++counter;
+      }
+
     }
     else
     {
@@ -171,6 +212,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "rrt_str");
   ros::NodeHandle n;
   path_pub = n.advertise<visualization_msgs::Marker>( "rrt_path", 0 );
+  nextPosition = n.advertise<geometry_msgs::Point>( "nextPosition", 0 );
   ros::Subscriber subInit = n.subscribe("Position", 1, initial);
   ros::Subscriber sub = n.subscribe("manager_task", 1, find_path);
   rrtstar_algo();
