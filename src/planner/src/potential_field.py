@@ -130,6 +130,7 @@ def callback(data):
         nextPoint_PT.z = 0
         point_PT.publish(nextPoint_PT)
     else:
+        makeArrow(np.array([0,0]),np.array([0,0]))
         pass
 if __name__ == '__main__':
     try:

@@ -161,7 +161,7 @@ void find_path(const planner::manager_msgs::ConstPtr& msg)
           return;
         }else boolNewPath = false;
         // ROS_INFO_STREAM(distance);
-        direction/=distance*50;
+        direction/=distance*75;
         Vector2f v2fNxPoint(currentPoint+direction);
         // ROS_INFO_STREAM(v2fNxPoint);
         geometry_msgs::Point nxPoint;

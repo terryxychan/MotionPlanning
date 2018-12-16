@@ -26,9 +26,11 @@ positionNow = rospy.Publisher('/Position',Point,queue_size=10)
 topic = 'agent'
 publisher = rospy.Publisher(topic, Marker,queue_size = 100)
 marker = Marker()
+
 def makeMarker(x,y):
         marker.id = 0
         marker.header.frame_id = "/base"
+        marker.ns = "agent"
         marker.type = marker.SPHERE
         marker.action = marker.ADD
         marker.scale.x = 0.5
@@ -140,6 +142,8 @@ def selection(data):
             manager_msg.obs_y = data.y
             manager_msg.agent_x = agent_x_now
             manager_msg.agent_y = agent_y_now
+            plannerType = 'Potential Field'
+            makeText(plannerType)
             pub_manager.publish(manager_msg)
         else:
             print("RRT!")
@@ -150,9 +154,30 @@ def selection(data):
             manager_msg.obs_y = data.y
             manager_msg.agent_x = agent_x_now
             manager_msg.agent_y = agent_y_now
+            plannerType = 'RRT*'
+            makeText(plannerType)
             pub_manager.publish(manager_msg)
     else:
             pass
+
+def makeText(data):
+        marker.id = 2
+        marker.header.frame_id = "/base"
+        marker.ns = "plannerType"
+        marker.type = marker.TEXT_VIEW_FACING
+        marker.action = marker.ADD
+        marker.text = data
+        marker.scale.z = 2.5
+        marker.color.a = 1.0
+        marker.color.r = 1.0
+        marker.color.g = 1.0
+        marker.color.b = 1.0
+        marker.pose.orientation.w = 1.0
+        # Position subscribed from both RRT and Potetial
+        marker.pose.position.x = 15
+        marker.pose.position.y = 20
+        marker.pose.position.z = 0
+        publisher.publish(marker)
 
 def main():
     rospy.init_node('manager', anonymous=True)
