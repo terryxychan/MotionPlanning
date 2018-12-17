@@ -146,6 +146,7 @@ void find_path(const planner::manager_msgs::ConstPtr& msg)
           q = q->parent;
         }
         path_pub.publish( marker );
+        ROS_INFO_STREAM("New Path Found");
         return;
       }
       else{
