@@ -8,23 +8,23 @@ The haptic-shared-control project provided us with the platform to simulate the 
 
 In order to run the simulation:
 Open the Geomagic Touch interface: 
-'''
+```
 roslaunch geomagic_control geomagic.launch
-'''
+```
 Create the environmnt by running:
-'''
+```
 rosrun using_markers using_markers
 rosrun using_markers static_obstacles
-'''
+```
 Run the manager:
-'''
+```
 rosrun planner manager_v2.py
-'''
+```
 Run RRT*:
-'''
+```
 rosrun planner rrt_star
-'''
+```
 Run Potential field:
-'''
+```
 rosrun planner potential_field.py
-'''
+```
