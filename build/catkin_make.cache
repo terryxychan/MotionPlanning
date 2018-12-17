@@ -1,2 +1,2 @@
-haptic-shared-control/geomagic_touch/geomagic_control:haptic-shared-control/geomagic_touch/geomagic_description:haptic-shared-control/using_markers:path-planning/rrt_planner:planner
+haptic-shared-control/geomagic_touch/geomagic_control:haptic-shared-control/geomagic_touch/geomagic_description:haptic-shared-control/using_markers:planner
 -DCATKIN_DEVEL_PREFIX=/home/wall-e/Terry_ws/devel -DCMAKE_INSTALL_PREFIX=/home/wall-e/Terry_ws/install -G Unix Makefiles

@@ -127,7 +127,7 @@ void find_path(const planner::manager_msgs::ConstPtr& msg)
           Vector2f direction(aimPoint - currentPoint);
           double distance(sqrt(direction.transpose()*direction));
           // ROS_INFO_STREAM(distance);
-          direction/=distance*50;
+          direction/=distance*60;
           Vector2f v2fNxPoint(currentPoint+direction);
           // ROS_INFO_STREAM(v2fNxPoint);
           agent_x = v2fNxPoint.x();

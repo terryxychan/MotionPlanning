@@ -121,7 +121,6 @@ IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   INCLUDE("/home/wall-e/Terry_ws/build/haptic-shared-control/geomagic_touch/geomagic_control/cmake_install.cmake")
   INCLUDE("/home/wall-e/Terry_ws/build/haptic-shared-control/geomagic_touch/geomagic_description/cmake_install.cmake")
   INCLUDE("/home/wall-e/Terry_ws/build/haptic-shared-control/using_markers/cmake_install.cmake")
-  INCLUDE("/home/wall-e/Terry_ws/build/path-planning/rrt_planner/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

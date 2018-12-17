@@ -7,11 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/wall-e/Terry_ws/devel:$CMAKE_PREFIX_PATH"
-export CPATH="/home/wall-e/Terry_ws/devel/include:$CPATH"
-export LD_LIBRARY_PATH="/home/wall-e/Terry_ws/devel/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/wall-e/Terry_ws/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD="/home/wall-e/Terry_ws/build"
-export PYTHONPATH="/home/wall-e/Terry_ws/devel/lib/python2.7/dist-packages:$PYTHONPATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/wall-e/Terry_ws/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/wall-e/Terry_ws/src:$ROS_PACKAGE_PATH"
