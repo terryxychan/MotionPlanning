@@ -87,6 +87,7 @@ void find_path(const planner::manager_msgs::ConstPtr& msg)
     if (boolReached) {
       Vector2f currentPoint(msg->agent_x+20,msg->agent_y+20);
       if(boolNewPath || abs(agent_x-currentPoint.x())>0.05 || abs(agent_y - currentPoint.y())>0.05){//agent_x != currentPoint.x() || agent_y != currentPoint.y()
+        ROS_INFO_STREAM("New Path");
         boolNewPath = false;
         Node *q;
         q = rrtstar->nearest(currentPoint);
@@ -145,11 +146,12 @@ void find_path(const planner::manager_msgs::ConstPtr& msg)
           q = q->parent;
         }
         path_pub.publish( marker );
+        ROS_INFO_STREAM("New Path Found");
         return;
       }
       else{
         if(counter>rand()%100+20){
-          ROS_INFO_STREAM("Path reset!"<<rand()%60+30);
+          // ROS_INFO_STREAM("Path reset!"<<rand()%60+30);
           boolNewPath = true;
           counter = 0;
           return;
